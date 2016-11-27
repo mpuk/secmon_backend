@@ -13,7 +13,7 @@
 		'git pull',
 		'git status',
 		'git submodule sync',
-		'git submodule update',
+		'./yii migrate',
 		'git submodule status',
 	);
 	// Run the commands for output
@@ -42,6 +42,13 @@
               |____________________________|
 
 <?php echo $output; ?>
+<?php 
+
+$fp = fopen("lastdepoy.txt", "w+");
+fwrite($fp, $output, true));
+fclose($fp);
+
+?>
 </pre>
 </body>
 </html>
