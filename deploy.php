@@ -17,12 +17,14 @@
 	);
 	// Run the commands for output
 	$output = '';
+	$console = '';
 	foreach($commands AS $command){
 		// Run it
 		$tmp = shell_exec($command);
 		// Output
 		$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
 		$output .= htmlentities(trim($tmp)) . "\n";
+		$console .= $command . "\n" htmlentities(trim($tmp)) . "\n";
 	}
 	// Make it pretty for manual user access (and why not?)
 ?>
@@ -44,7 +46,7 @@
 <?php 
 
 $fp = fopen("lastdepoy.txt", "w+");
-fwrite($fp, $output);
+fwrite($fp, $console);
 fclose($fp);
 
 ?>
