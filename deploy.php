@@ -24,7 +24,7 @@
 		// Output
 		$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
 		$output .= htmlentities(trim($tmp)) . "\n";
-		$console .= $command . "\n" htmlentities(trim($tmp)) . "\n";
+		$console .= $command . "\n" . htmlentities(trim($tmp)) . "\n";
 	}
 	// Make it pretty for manual user access (and why not?)
 ?>
