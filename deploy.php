@@ -12,9 +12,8 @@
 		'whoami',
 		'git pull',
 		'git status',
-		'git submodule sync',
+		'composer update',
 		'./yii migrate',
-		'git submodule status',
 	);
 	// Run the commands for output
 	$output = '';
