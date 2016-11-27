@@ -44,7 +44,7 @@
 <?php 
 
 $fp = fopen("lastdepoy.txt", "w+");
-fwrite($fp, $output, true));
+fwrite($fp, $output);
 fclose($fp);
 
 ?>
