@@ -1,7 +1,9 @@
 <?php
 
-namespace app\models\Event;
+namespace app\models;
 
+use app\components\filter\FilterQuery;
+use app\models\Event\EventType;
 use Yii;
 
 /**
@@ -60,4 +62,12 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasOne(EventType::className(), ['id' => 'type_id']);
     }
+
+	/**
+	 * @return FilterQuery
+	 */
+	public static function find()
+	{
+		return Yii::createObject(FilterQuery::className(), [get_called_class()]);
+	}
 }
