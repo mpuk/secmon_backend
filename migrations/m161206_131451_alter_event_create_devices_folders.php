@@ -7,11 +7,11 @@ class m161206_131451_alter_event_create_devices_folders extends Migration
     public function up()
     {
 
-	$this->addColumn('events', 's_IP', $this->string());
-	$this->addColumn('events', 'd_IP', $this->string());
-	$this->addColumn('events', 's_port', $this->integer()->unsigned());
-	$this->addColumn('events', 'd_port', $this->integer()->unsigned());
-	$this->addColumn('events', 'severity', $this->integer()->unsigned());
+	$this->addColumn('events', 'source_ip', $this->string());
+	$this->addColumn('events', 'destination_ip', $this->string());
+	$this->addColumn('events', 'source_port', $this->integer()->unsigned());
+	$this->addColumn('events', 'destination_port', $this->integer()->unsigned());
+	$this->addColumn('events', 'severity', $this->integer()->unsigned()->defaultValue(1));
 
         $this->addCommentOnColumn('events', 'description', 'correl_log');
 
@@ -77,10 +77,19 @@ class m161206_131451_alter_event_create_devices_folders extends Migration
 
     public function down()
     {
-        $this->dropTable('device_groups');
+	$this->dropColumn('events', 'source_ip');
+        $this->dropColumn('events', 'destination_ip');
+        $this->dropColumn('events', 'source_port');
+        $this->dropColumn('events', 'destination_port');
+        $this->dropColumn('events', 'severity');
+
+        $this->dropCommentFromColumn('events', 'description');
+
+
         $this->dropTable('rel_event_log');
         $this->dropTable('logs');
         $this->dropTable('devices');
+        $this->dropTable('device_groups');
     }
 
 
