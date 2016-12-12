@@ -1,7 +1,7 @@
 $(function () {
 	// Initialize collapse button
     $('.button-collapse').sideNav({
-	    menuWidth: 300, // Default is 240
+	    menuWidth: 250, // Default is 240
 	    draggable: true // Choose whether you can drag to open on touch screens
     });
 
@@ -13,5 +13,19 @@ $(function () {
         format: 'yyyy-mm-dd',
         closeOnSelect: true,
         firstDay: 1
+    });
+
+    var grid = $('.grid').packery({
+      // options
+      itemSelector: '.grid-item',
+      gutter: 10,
+      columnWidth: 100
+    });
+
+    // make all items draggable
+    grid.find('.grid-item').each( function( i, gridItem ) {
+      var draggie = new Draggabilly( gridItem );
+      // bind drag events to Packery
+      grid.packery( 'bindDraggabillyEvents', draggie );
     });
 });
